@@ -1,31 +1,25 @@
+from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
 import time
 
 def login_func(username,password,driver):
-    url = "https://www.instagram.com/"
-    driver.get(url)
-
-    time.sleep(3)
-    name = "username"
-    username_input = driver.find_element(By.NAME,name)
+    wait = WebDriverWait(driver, 10)
+    username_input = wait.until(EC.presence_of_element_located((By.NAME,"username")))
     username_input.send_keys(username)
-
-    name = "password"
-    password_input = driver.find_element(By.NAME,name)
-    password_input.send_keys(password)
-
-    time.sleep(3)
-    path = "/html/body/div[1]/section/main/article/div[2]/div[1]/div[2]/form/div/div[3]/button/div" # Login button path
-    login_button = driver.find_element(By.XPATH,path)
+    passwd_input = wait.until(EC.presence_of_element_located((By.NAME,"password")))
+    passwd_input.send_keys(password)
+    path = "/html/body/div[1]/section/main/article/div[2]/div[1]/div[2]/form/div/div[3]/button/div"
+    time.sleep(1)
+    login_button = wait.until(EC.element_to_be_clickable((By.XPATH,path)))
     login_button.click()
     time.sleep(3)
-
-    path = "/html/body/div[1]/section/main/div/div/div/div/button" # 'Not Now' for save info button #
-    not_now_button = driver.find_element(By.XPATH,path)
-    not_now_button.click()
-    time.sleep(4)
-
-    path = "/html/body/div[1]/div/div[1]/div/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div/div[3]/button[2]"
-    not_now_button1 = driver.find_element(By.XPATH,path)
+    path = "/html/body/div[1]/section/main/div/div/div/div/button"
+    not_now_button1 = wait.until(EC.element_to_be_clickable((By.XPATH,path)))
     not_now_button1.click()
-    time.sleep(4)
+    time.sleep(2)
+    path = "/html/body/div[1]/div/div[1]/div/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div/div[3]/button[2]"
+    not_now_button2 = wait.until(EC.element_to_be_clickable((By.XPATH,path)))
+    not_now_button2.click()
+    time.sleep(3)
