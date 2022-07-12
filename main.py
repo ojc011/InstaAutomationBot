@@ -7,7 +7,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from login import login_func
-from like_comment_follow import like_with_hashtags, only_comments, follow_with_hashtags
+from like_comment_follow import like_with_hashtags, only_comments, follow_with_hashtags, like_comment_follow
 from random import randint
 import pyautogui
 
@@ -22,4 +22,4 @@ time.sleep(2)
 login_func(username,password,driver)
 wait = WebDriverWait(driver, 10)
 
-follow_with_hashtags(driver)
+like_comment_follow(driver)
