@@ -7,9 +7,10 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from login import login_func
-from like_comment_follow import like_with_hashtags, only_comments
+from like_comment_follow import like_with_hashtags, only_comments, follow_with_hashtags
 from random import randint
 import pyautogui
+
 
 load_dotenv()
 username = os.getenv('IG_UN') ## ENTER YOUR IG USERNAME HERE ##
@@ -20,4 +21,5 @@ driver.get(url)
 time.sleep(2)
 login_func(username,password,driver)
 wait = WebDriverWait(driver, 10)
-only_comments(driver)
+
+follow_with_hashtags(driver)
