@@ -66,7 +66,9 @@ def follow_with_hashtags(driver):
         for i in range(1,100):
             path = "/html/body/div[1]/div/div[1]/div/div[2]/div/div/div[1]/div/div[3]/div/div/div/div/div[2]/div/article/div/div[2]/div/div/div[1]/div/header/div[2]/div[1]/div[2]/button"
             follow_button = wait.until(EC.element_to_be_clickable((By.XPATH,path)))
-            follow_button.click()
+            if(follow_button.text != "Following"):
+                follow_button.click()
+            else: pass
             pyautogui.press('right') 
             time.sleep(randint(2,5))
             completed_follows+=1
