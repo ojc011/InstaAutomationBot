@@ -14,7 +14,7 @@ def login_func(username,password,driver):
     time.sleep(1)
     login_button = wait.until(EC.element_to_be_clickable((By.XPATH,path)))
     login_button.click()
-    time.sleep(3)
+    time.sleep(5)
     path = "/html/body/div[1]/section/main/div/div/div/div/button"
     not_now_button1 = wait.until(EC.element_to_be_clickable((By.XPATH,path)))
     not_now_button1.click()

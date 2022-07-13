@@ -75,9 +75,9 @@ def follow_with_hashtags(driver):
     print("Completed follows : "+ completed_follows)
     
 def like_comment_follow(driver):
-    comments = ["Looking great", "Awesome work", "Keep it up", "Nice!"]
-    hashtags = ["fitness", "motivation"]
-    for i in hashtags:
+    comments = ["Lookin good", "Handsome", ":)"]
+    hashtags = ["fitness","motivation"]
+    for i in hashtags: 
         wait = WebDriverWait(driver, 10)
         url = "https://www.instagram.com/explore/tags/"+i+"/"
         driver.get(url)
