@@ -6,8 +6,8 @@ from selenium.webdriver.common.by import By
 from random import randint
 import pyautogui
 
-def like_with_hashtags(driver):
-    hashtags = ["fitness", "motivation"]
+def like_with_hashtags(driver,hashtags):
+    # hashtags = ["fitness", "motivation"]
     for i in hashtags:
         completed_likes = 0
         wait = WebDriverWait(driver, 10)
@@ -24,9 +24,9 @@ def like_with_hashtags(driver):
             time.sleep(randint(2, 5))
             completed_likes+=1
 
-def only_comments(driver):
+def only_comments(driver,hashtags):
     comments = ["Looking great", "Awesome work", "Keep it up", "Nice!"]
-    hashtags = ["fitness", "motivation"]
+    # hashtags = ["fitness", "motivation"]
     for i in hashtags:
         completed_comments = 0
         wait = WebDriverWait(driver, 10)
@@ -45,16 +45,17 @@ def only_comments(driver):
             comment = comments[randint(0,len(comments)-1)]  
             comment_text.send_keys(comment)
             time.sleep(3)
-            path = "/html/body/div[1]/div/div[1]/div/div[2]/div/div/div[1]/div/div[3]/div/div/div/div/div[2]/div/article/div/div[2]/div/div/div[2]/section[3]/div/form/button"
-            post_button = wait.until(EC.element_to_be_clickable((By.XPATH,path)))
+            #path = "/html/body/div[1]/div/div[1]/div/div[2]/div/div/div[1]/div/div[3]/div/div/div/div/div[2]/div/article/div/div[2]/div/div/div[2]/section[3]/div/form/button"
+            post_button = wait.until(
+                EC.element_to_be_clickable((By.XPATH,"//button[contains(.,'Post')]")))
             post_button.click()
             pyautogui.press('right') 
             time.sleep(randint(2,5))
             completed_comments+=1
     print("Completed comments : "+ completed_comments)
     
-def follow_with_hashtags(driver):
-    hashtags = ["fitness", "motivation"]
+def follow_with_hashtags(driver,hashtags):
+    # hashtags = ["fitness", "motivation"]
     for i in hashtags:
         completed_follows = 0
         wait = WebDriverWait(driver, 10)
@@ -74,9 +75,9 @@ def follow_with_hashtags(driver):
             completed_follows+=1
     print("Completed follows : "+ completed_follows)
     
-def like_comment_follow(driver):
-    comments = ["Lookin good", "Handsome", ":)"]
-    hashtags = ["fitness","motivation"]
+def like_comment_follow(driver,hashtags):
+    comments = ["Lookin good", "Nice!", ":)"]
+    # hashtags = ["fitness","motivation"]
     for i in hashtags: 
         wait = WebDriverWait(driver, 10)
         url = "https://www.instagram.com/explore/tags/"+i+"/"
